@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option java_package = "com.demo.grpc";
+
+service user{
+  rpc login(LoginReq) returns (APIRes);
+  rpc Register(registrationReq) returns (APIRes);
+  rpc Update(updateReq) returns (APIRes);
+  rpc ViewProfile(viewReq) returns (APIRes);
+  rpc logout(Empty) returns (APIRes);
+}
+
+message registrationReq{
+  string name=1;
+  string emailId=2;
+  string password=3;
+  string department=4;
+  string session=5;
+}
+
+message LoginReq{
+  string username = 1;
+  string password = 2;
+}
+
+message updateReq{
+  string name=1;
+  string emailId=2;
+  string password=3;
+  string department=4;
+  string session=5;
+}
+
+message viewReq{
+  string name=1;
+  string password=2;
+
+}
+
+message APIRes{
+  string message = 1;
+  int32 resCode = 2;
+}
+
+message viewRes{
+  string message = 1;
+}
+
+message Empty{
+}
